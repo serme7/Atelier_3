@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+
+class Shape {
+    public:
+    float largeur;
+    float hauteur;
+    
+    Shape (float ht, float lr){
+        largeur=ht;
+        hauteur=lr;
+    };
+};
+
+class Rectangle: public Shape  {
+    public:
+     Rectangle(double ht, double lr) : Shape(ht, lr){}
+     double area(){
+        return (hauteur *  largeur);
+    };
+};
+class Triangle: public Shape {
+    public:
+
+    Triangle(double ht, double lr) : Shape(ht, lr){}
+    double area(){
+        return (hauteur *  largeur)/2;
+    };
+};
+
+int main (){
+    Triangle t1(2,3);
+    Rectangle r2(5,6);
+
+    cout<<"Are de Triangle est  "<<t1.area()<<endl;
+    cout<<"Are de Rectangle est "<<r2.area();
+        
+    return 0;
+}

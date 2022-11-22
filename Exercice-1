@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+
+class Mere {
+    public:
+        void display(){
+            cout<<"Hello Class Mere ";
+        }
+
+};
+class Fille : public  Mere {
+    public:
+        void display(){
+            cout<<"Hello Class fille ";
+        }
+
+};
+
+int main(){
+        
+        Fille f1;
+        f1.display();
+
+        return 0;
+
+
+}

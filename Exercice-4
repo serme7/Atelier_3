@@ -1,0 +1,24 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+class Myclass {
+public:
+    Myclass();
+
+    ~Myclass();
+    };
+Myclass::Myclass(){
+    cout << "hello \n" ;
+};
+
+Myclass::~Myclass(){
+    cout << "Bye" 
+    ;}
+
+int main()
+{
+    Myclass cls1;
+
+    return 0;
+}

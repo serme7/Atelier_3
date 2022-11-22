@@ -1,0 +1,81 @@
+#include <iostream>
+using namespace std;
+
+class Personne {
+    public:
+    string nom;
+    string prenom;
+    string date_naissance;
+
+     Personne(string n,string p, string d){
+        nom = n;
+        prenom = p;
+        date_naissance = d;
+    }
+
+    void Afficher(){
+        cout << nom << endl;
+        cout << prenom << endl;
+        cout << date_naissance << endl;
+    }
+};
+
+class Employe : public Personne {
+    public:
+    float salaire;
+
+        Employe( string n,string p, string d, float s): Personne(n,p,d){
+
+        salaire = s;
+    }
+
+     void Afficher(){
+        cout << nom << endl;
+        cout << prenom << endl;
+        cout << date_naissance << endl;
+        cout << salaire << endl;
+    }
+};
+
+class Chef : public Employe{
+    public:
+    string service;
+
+    explicit Chef(string n,string p, string d , float s , string serv) : Employe (n,p, d, s){
+
+        service = serv;
+    }
+
+     void Afficher(){
+        cout << nom << endl;
+        cout << prenom << endl;
+        cout << date_naissance << endl;
+        cout << salaire << endl;
+        cout << service << endl;
+    }
+};
+
+class Directeur : public Chef{
+    public:
+    string societe;
+
+    explicit Directeur(string n,string p, string d , float s ,string serv, string soci): Chef (n,p, d, s, serv){
+
+        societe = soci;
+    }
+
+     void Afficher(){
+        cout << nom << endl;
+        cout << prenom << endl;
+        cout << date_naissance << endl;
+        cout << salaire << endl;
+        cout << service << endl;
+        cout << societe << endl;
+    }
+};
+int main()
+{
+    Directeur dir("Mohamed", "Serbout", "2001-10-15", 10000, "reception" ,"Crystal Glass");
+    dir.Afficher();
+    return 0;
+}

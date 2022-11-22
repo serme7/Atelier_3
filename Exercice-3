@@ -1,0 +1,77 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+class Complexes {
+    public:
+        double a;
+        double b;
+    Complexes(double n, double f){
+            a=n;
+            b=f;
+    };
+    public:
+        void sum(Complexes c1,Complexes c2){
+            cout<<"La somme est : "<<(c1.a+c2.a)<<"i+"<<c1.b+c2.b;
+            cout<<endl;
+
+        };
+        void sous(Complexes c1,Complexes c2){
+            cout<<"La soustraction est : "<<(c1.a-c2.a)<<"i+"<<c1.b-c2.b;
+            cout<<endl;
+        };
+        void mult(Complexes c1,Complexes c2){
+            cout<<"La multiplication est : "<< (c1.a*c2.a)-(c1.b*c2.b)<<" + "<<((c1.a*c2.b)+(c1.b*c2.a))<<"i"; 
+                        cout<<endl;
+ 
+        };
+        void div(Complexes c1,Complexes c2) {
+            cout<<((c1.a*c2.a)+(c1.b*c2.b))/(pow(c2.a,2)+pow(c2.b,2)) <<" + "<<((c1.b*c2.a)-(c1.a*c2.b))/ (pow(c2.a,2)+pow(c2.b,2))<<"i";
+        };
+};
+
+int main (){
+    double v,w,x,y;
+    int temporary;
+    cout<<"Donner 1 partie réelle : "<<endl;
+    cin>>v;
+    cout<<"Donner 1 partie imaginaire : "<<endl;
+    cin>>w;
+
+    cout<<"Donner 2 partie réelle : "<<endl;
+    cin>>x;
+    cout<<"Donner 2 partie imaginaire : "<<endl;
+    cin>>y;
+
+Complexes c1(v,w);
+Complexes c2(x,y);
+
+    again:
+    cout << "choisir l'operation: \n"
+        << "enter 1 pour somme ;\n"
+        << "enter 2 pour soustraction ;\n"
+        << "enter 3 pour multiplication ;\n"
+        << "enter 4 pour Division ;\n" <<endl;
+
+        cin>> temporary;
+
+    switch (temporary)
+    {
+    case 1 :
+        c1.sum(c1,c2);
+        break;
+    case 2 :
+        c1.sous(c1,c2);
+        break;
+    case 3 :
+        c1.mult(c1,c2);
+        break;
+    case 4 :
+        c1.div(c1,c2);
+        break;
+    
+    default:
+        cout << "Enter a valid operation number!\n\n";
+            goto again;
+    };
+}

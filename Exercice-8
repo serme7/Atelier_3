@@ -1,0 +1,91 @@
+#include <iostream>
+#include<math.h>
+using namespace std;
+class Media{
+
+    public:
+    string titre;
+
+    Media(){}
+    Media(string ttr){
+        titre = ttr;
+    }
+    virtual void Imprimer(){
+        cout << titre <<endl;
+    }
+    char Id(){ };
+};
+
+class Livre : public Media{
+    string auteur;
+    string datePublication;
+
+
+};
+
+//-------------------------------------------
+class Audio : public Media{
+    public:
+    float capacite;
+    string mark;
+
+    Audio(){}
+    Audio (string ttr, float cap, string mrk) : Media(ttr)
+    { capacite = cap;  mark = mrk;}
+
+    void Imprimer(){
+    cout << titre <<"\n" << capacite <<"\n" <<mark <<endl;
+    }
+
+};
+class CD : public Audio{
+    public:
+    string type;
+    CD(string ttr, float cap, string mrk, string tp) : Audio (ttr, cap, mrk)
+    {type = tp;}
+
+    void Imprimer(){
+    cout << titre <<"\n" << capacite <<"\n" <<mark <<"\n" <<type;
+    }
+
+};
+class Cassette : public Audio{
+    public:
+    float longeurBand;
+    Cassette(string ttr, float cap, string mrk , float lb) : Audio (ttr, cap, mrk)
+    {longeurBand = lb;}
+
+     void Imprimer(){
+    cout << titre <<"\n" << capacite <<"\n" <<mark <<"\n" <<longeurBand;
+    }
+};
+class Disque : public Audio{
+    public:
+    int numDesTour;
+    Disque(string ttr, float cap, string mrk, float nt) : Audio (ttr, cap, mrk)
+    {numDesTour = nt;}
+
+    void Imprimer(){
+    cout << titre <<"\n" << capacite <<"\n" <<mark <<"\n" <<numDesTour << endl;
+    }
+};
+
+
+
+
+int main()
+{
+    Audio a("Audio1", 99.0 , "Wave");
+
+    Disque d("Disque 1", 1000, "SanDisk", 900);
+
+    Media m;
+
+    m.Imprimer();
+
+    a.Imprimer();
+
+    d.Imprimer();
+
+    return 0;
+}

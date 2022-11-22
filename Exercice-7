@@ -1,0 +1,132 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+class Vector3d {
+    public :
+    float x , y , z;
+
+    Vector3d(float x1 , float y1, float z1){
+            x = x1;
+            y= y1;
+            z = z1;
+    }
+    Vector3d(){x = 0; y =0; z=0;}
+};
+
+void Somme(Vector3d &v1 , Vector3d v2 ){
+     v1.x = v1.x + v2.x;
+     v1.y = v1.y + v2.y ;
+     v1.z = v1.z + v2.z ;
+}
+
+float produitScalaire(Vector3d v1 , Vector3d v2 ){
+    float resultat = v1.x*v2.x  +  v1.y*v2.y  +   v1.z*v2.z ;
+    return resultat;
+}
+
+bool Egalite(Vector3d v1 , Vector3d v2 ){
+    if( v1.x==v2.x  &&  v1.y==v2.y  &&   v1.z==v2.z ){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+float Norme(Vector3d v1 ){
+    float resultat = sqrt ( pow(v1.x, 2.0) + pow(v1.y, 2.0)+ pow(v1.z, 2.0) );
+    return resultat;
+}
+
+void maxNorme(Vector3d v1 , Vector3d v2 , Vector3d *maxV ){
+     if ( Norme(v1) > Norme(v2)){
+             *maxV = v1;
+     }else { *maxV = v2;  }
+}
+
+int main()
+{
+    Vector3d vect1;
+    Vector3d vect2;
+
+    Vector3d maxNormeVecteur;
+
+    int operation;
+
+    again:
+     cout << "choisir l'operation: \n"
+        << "enter 1 pour la somme ;\n"
+        << "enter 2 pour le produit scalaire ;\n"
+        << "enter 3 pour verifier l'egalit� ;\n"
+        << "enter 4 pour obtenir  la norme du vecteur ;\n"
+        << "enter 5 pour obtenir le vecteur a la norme plus grande ;\n";
+    cin >> operation;
+
+    if(operation > 5){
+        cout << "Enter a valid operation number!\n\n";
+            goto again;
+    }
+    else if(operation == 4){
+        cout << "Etrer les composantes du vecteur: \n";
+        cout << "x: ";
+        cin>> vect1.x;
+        cout << "y: ";
+        cin>> vect1.y;
+        cout << "z: ";
+        cin>> vect1.z;
+    }else{
+        cout << "Etrer les composantes du premiere vecteur: \n";
+        cout << "x: ";
+        cin>> vect1.x;
+        cout << "y: ";
+        cin>> vect1.y;
+        cout << "z: ";
+        cin>> vect1.z;
+
+         cout << "Etrer les composantes du deuxiem vecteur: \n";
+        cout << "x: ";
+        cin>> vect2.x;
+        cout << "y: ";
+        cin>> vect2.y;
+        cout << "z: ";
+        cin>> vect2.z;
+    }
+
+    switch(operation){
+        case 1:
+            Somme(vect1 , vect2);
+            cout << "("<< vect1.x << ", "
+                       << vect1.y << ", "
+                       << vect1.z << ")" ;
+    break;
+      //----------------------------------------------
+        case 2:
+        cout << produitScalaire(vect1 , vect2);
+
+    break;
+    //----------------------------------------------
+        case 3:
+            if(Egalite(vect1 , vect2)){
+                cout << "ont m�mes composantes.";
+            }else {
+            cout << "ont pas m�mes composantes!!!";}
+
+    break;
+
+    //----------------------------------------------
+        case 4:
+         cout << "la norme est: ";
+         cout << Norme(vect1);
+    break;
+
+    //----------------------------------------------
+        case 5:
+        maxNorme(vect1, vect2, &maxNormeVecteur);
+        cout << "le vecteur a la norme plus grande est: ";
+        cout << "("<< maxNormeVecteur.x << ", "
+                       << maxNormeVecteur.y << ", "
+                       << maxNormeVecteur.z << ")" ;
+
+    break;
+    }
+    return 0;
+}

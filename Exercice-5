@@ -1,0 +1,38 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+class Animal{
+    private :
+        string name;
+        int age;
+    public:
+        void set_value(string n, int a){
+            name=n; age=a;
+        };
+};
+class Zebra : public Animal {
+    private :
+        string name;
+        int age;
+        string place ;
+    public:
+        Zebra(string name,int age,string place ){
+        cout<<"My name is "<<name<<"i'm "<<age<<". I from "<<place;
+    };
+};
+class Dolphin : public Animal {
+    private :
+        string name;
+        int age;
+        string place ;
+    public:
+    Dolphin(string name,int age,string place ){
+        cout<<"My name is "<<name<<"i'm "<<age<<". I from "<<place;
+    };
+};
+
+int main(){
+    Zebra z1("zz",7,"5");
+    Dolphin dd1( "Dolphine" ,5,"Africa");
+}
